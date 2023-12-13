@@ -13,8 +13,4 @@ if __name__ == "__main__":
     for row in rows:
         print(row)
     cur.close()
-<<<<<<< HEAD
     db.close()
-=======
-    db.close()
->>>>>>> 9f087e22181279d64e0af95ddff9b0f71fb1e5fb
