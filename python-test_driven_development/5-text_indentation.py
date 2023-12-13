@@ -1,50 +1,27 @@
 #!/usr/bin/python3
-""""Doc"""
+"""Defines a text-indentation function."""
 
 
 def text_indentation(text):
-    """ Doc here
-    """
-    if type(text) is not str:
+    """A function that prints two new lines after the char ...
+        :param text:
+        :type text:; string
+        :raise TypeError: if text is not a string
+        """
+    if not isinstance(text, str):
         raise TypeError("text must be a string")
 
-    for delim in ".:?":
-        text = (delim + "\n\n").join(
-            [line.strip(" ") for line in text.split(delim)])
+    c = 0
+    while c < len(text) and text[c] == ' ':
+        c += 1
 
-    print("{}".format(text), end="")
-
-# def text_indentation(text):
-#     """"Doc"""
-#     if not isinstance(text, (str,)):
-#         raise TypeError("text must be a string")
-
-#     characters = [".", "?", ":"]
-#     index = 0
-#     while index < len(text):
-#         if text[index] in characters:
-#             print(text[index], end="")
-#             print('\n')
-#             index += 1
-#             if text[index] == " ":
-#                 index += 1
-#         else:
-#             print(text[index], end="")
-#             index += 1
-
-# def text_indentation(text):
-#     """"Doc"""
-#     if not isinstance(text, (str,)):
-#         raise TypeError("text must be a string")
-
-#     characters = [".", "?", ":"]
-#     for i in range(len(text)):
-#         if text[i] in characters:
-#             try:
-#                 if text[i + 1] == " ":
-#                     text = text[:i + 1] + "\n\n" + text[i + 2:]
-#                 else:
-#                     text = text[:i + 1] + "\n\n" + text[i + 1:]
-#             except IndexError:
-#                 pass
-#     print(text, end="")
+    while c < len(text):
+        print(text[c], end="")
+        if text[c] == "\n" or text[c] in ".?:":
+            if text[c] in ".?:":
+                print("\n")
+            c += 1
+            while c < len(text) and text[c] == ' ':
+                c += 1
+            continue
+        c += 1
